@@ -1,0 +1,18 @@
+// Exercise 05.01.01
+// This program prints eight integer array members.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i;
+    int scores[8] = {5, 15, 25, 35, 45, 55, 65, 75};
+
+    for(i = 0; i < 8; i++) {
+        cout << scores[i] << "  ";
+    }
+    cout << endl;
+    system("PAUSE");
+    return 0;
+}
+

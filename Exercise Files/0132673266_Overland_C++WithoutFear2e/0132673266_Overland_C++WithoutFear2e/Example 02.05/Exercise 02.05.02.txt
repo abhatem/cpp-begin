@@ -1,0 +1,71 @@
+// Exercise 02.05.02
+// Game of NIM:
+// Accepts positive input only for initial total.
+// Also, permits any "delta" -- max. amount to subtract each turn.
+//
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int total, n;
+    int delta = 0;  // Max. number to subtract by each turn.
+    int remainder = 0;
+    
+    cout << "Welcome to NIM. Pick a starting total: ";
+    cin >> total;
+    while (total < 1) {
+         cout << "Enter positive integer only. " << endl;
+         cout << "Pick starting total: ";
+         cin >> total;
+    }
+    cout << "What should be the max. number to subtract? ";
+    cin >> delta;
+    while (delta < 1 || delta >= total) {
+         cout << "Enter positive integer only. " << endl;
+         cout << "Num must be less than starting total. " << endl;
+         cout << "Pick max. number to subtract: ";
+         cin >> delta;
+    }
+    while (true) {
+
+         // Pick best response and print results.
+         // Divide total by delta and use remainder
+         //  as the number to subtract by.
+
+         remainder = total % (delta + 1);
+         
+         if (remainder > 0) {
+              total = total - remainder;
+              cout << "I am subtracting " << remainder << "." << endl;
+         } else {
+              total--;
+              cout << "I am subtracting 1." << endl;            
+         }
+         cout << "New total is " << total << endl;
+         if (total == 0) {
+              cout << "I win!" << endl;
+              break;
+         }
+
+       // Get user’s response; must be in range 1 to delta.
+
+         cout << "Enter number to subtract, ";
+         cout << "from 1 to " << delta << ": ";
+         cin >> n;
+         while (n < 1 || n > delta) {
+               cout << "Input must be 1 to " << delta << ". " << endl;
+               cout << "Re-enter: ";
+               cin >> n;
+         }
+         total = total - n;
+         cout << "New total is " << total << endl;
+         if (total == 0) {
+              cout << "You win!" << endl;
+              break;
+         }
+    }
+    system("PAUSE");
+    return 0;
+}

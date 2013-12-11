@@ -1,0 +1,14 @@
+// Exercise 01.02.03
+// Print messages with two blank lines between each line of print.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "I am Blaxxon," << endl << endl << endl;
+     cout << "the godlike computer." << endl << endl << endl;
+     cout << "Fear me!" << endl;
+
+     system("PAUSE");
+     return 0;
+}

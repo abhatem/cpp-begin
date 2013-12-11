@@ -1,0 +1,25 @@
+// Exercise 02.02.04
+// This program ges prints numbers from 1 to n.
+//  It initializes both i and n on same line.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int  i = 1, n = 0;
+
+// Get a n from the keyboard. 
+
+    cout << "Enter number and press ENTER: ";
+    cin >> n;
+
+ 
+    while (i <= n) {        // While i less than or equal to n2,
+        cout << i << " ";    //   Print i,
+        i = i + 1;           //   Add 1 to i.
+    }
+
+    system("PAUSE");
+    return 0;
+}
+

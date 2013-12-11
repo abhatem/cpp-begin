@@ -1,0 +1,27 @@
+// Exercise 02.01.01
+// This program determines whether a number is
+//  divisible by 7.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int  n;
+
+// Get a number from the keyboard. 
+
+    cout << "Enter a number and press ENTER: ";
+    cin >> n;
+
+// Get remainder after dividing by 7.
+// If remainder is 0, the number input is divisible
+//  by 7.
+
+    if (n % 7 == 0)
+        cout << "The number is divisible by 7." << endl;
+    else
+        cout << "The number is Not div. by 7." << endl;
+
+    system("PAUSE");
+    return 0;
+}

@@ -1,0 +1,27 @@
+x				Valid
+
+x1				Valid -- names may include digits
+
+EvilDarkness			Valid
+
+PennslyvaniaAve1600		Valid -- names may include digits
+
+1600PennsylvaniaAve		INvalid -- names may not start w/ digits
+
+Bobby_the_Robot			Valid -- underscores are okay
+
+Bobby+the+Robot			INvalid -- addition sign may not be included
+
+whatThe???			INvalid -- question mark may not be included
+
+amount				Valid
+
+count2				Valid
+
+count2five			Valid
+
+5count				INvalid -- names may not start w/ digits
+
+main				Valid
+
+main2				Valid

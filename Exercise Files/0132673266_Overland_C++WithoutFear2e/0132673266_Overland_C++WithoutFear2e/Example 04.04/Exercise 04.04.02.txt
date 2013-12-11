@@ -1,0 +1,39 @@
+// Exercise 04.04.01
+// Impelementation of GCF algorithm using iterative solution.
+//
+
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+
+int gcf(int a, int b);
+
+int main()
+{
+    int a = 0, b = 0; // Inputs to GCF.
+    
+    cout << "Enter a: ";
+    cin >> a;
+    cout << "Enter b: ";
+    cin >> b;
+    cout << "GCF = " << gcf(a, b) << endl;
+
+    system("PAUSE");
+    return 0;
+}
+
+
+// Greatest Common Fraction.
+// Note this is iterative, not recursive.
+//
+int gcf(int a, int b) {
+    
+    int temp = 0;
+
+    while (b > 0) {
+        temp = b;
+        b = a%b;
+        a = temp;
+    }
+    return a;
+}

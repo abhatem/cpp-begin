@@ -1,0 +1,24 @@
+// Exercise 02.02.02
+// This program prints numbers from n to 1, counting downward.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int  i, n;
+
+// Get a number from the keyboard and initialize i to n. 
+
+    cout << "Enter a number and press ENTER: ";
+    cin >> n;
+    i = n;
+
+    while (i > 0) {        // While i greater than 0,
+        cout << i << " ";   //   Print i,
+        i = i - 1;          //   Add 1 to i.
+    }
+
+    system("PAUSE");
+    return 0;
+}
+

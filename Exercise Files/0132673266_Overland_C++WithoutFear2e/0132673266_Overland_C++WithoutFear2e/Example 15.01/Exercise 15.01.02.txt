@@ -1,0 +1,66 @@
+// Exercise 15.01.02
+// Prints alpha list in reverse order.
+// This example also uses a recursive solution, in this case,
+// the function pr_reverse_list().
+//
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class node {
+    public:
+      string name;
+      node *next;
+      node(string input) {name = input; next = NULL; };
+};
+
+void pr_reverse_list(node *this_node);
+
+int main(int argc, char *argv[])
+{
+    node *root = NULL;
+    node *p_node, *new_node;
+    string a_name;
+   
+    while (true) {
+        cout << "Enter a name (or ENTER to exit): ";
+        getline(cin, a_name);
+        if (a_name.empty())
+              break;
+        new_node = new node(a_name);
+        
+        // If list is new or node goes at beginning,
+        // then insert as root node. Otherwise,
+        // search for a node to insert node AFTER.
+        
+        if (root == NULL || a_name < root->name) {
+             new_node->next = root;
+             root = new_node;
+        } else {
+             p_node = root;
+             while (p_node->next &&
+                    a_name > p_node->next->name) {
+                      p_node = p_node->next;
+             } 
+             new_node->next = p_node->next;
+             p_node->next = new_node;
+        }
+    }
+
+    pr_reverse_list(root);  // Print nodes in reverse order.
+ 
+    system("PAUSE");
+    return 0;
+}
+
+// Print reverse list:
+// This is a recursive solution, printing the entire list
+// the RIGHT of the node, and then printing the node itself.
+//
+void pr_reverse_list(node *this_node) {
+    if (this_node->next)
+        pr_reverse_list(this_node->next);
+    cout << this_node->name << endl;
+}
+

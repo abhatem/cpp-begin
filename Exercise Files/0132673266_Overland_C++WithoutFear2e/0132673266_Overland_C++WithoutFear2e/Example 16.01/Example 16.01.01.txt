@@ -1,0 +1,38 @@
+// Example 16.01.01
+// This example uses a continually sorted list rather than
+// sorting it on an ad-hoc basis.
+//
+
+#include <iostream>
+#include <list>
+#include <string>
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    string s; 
+    list<string> LS;
+    list<string>::iterator iter;
+    
+    while (true) {
+          cout << "Enter string (ENTER to exit): ";
+          getline(cin, s);
+          if (s.size() == 0)
+               break;
+          for (iter = LS.begin(); iter != LS.end() && s > *iter; )
+               iter++;
+          LS.insert(iter, s);
+    }
+
+
+// Sorting is now automatic, so the next line is commented out:
+//
+//    LS.sort();
+    
+    for (iter = LS.begin(); iter != LS.end(); iter++)
+        cout << *iter << endl;       
+    
+    system("PAUSE");
+    return 0;
+}

@@ -1,0 +1,76 @@
+// Exercise 15.01.03
+// Alpha list example enhanced with larger nodes:
+// includes age and salary info in each node.  
+//
+#include <iostream>
+#include <string>
+#include <cstdlib>    // Add support for atoi.
+
+using namespace std;
+
+class node {
+    public:
+      string name;
+      int age;        // New members age and salary declared here.
+      int salary;
+      node *next;
+      node(string input, int new_age, int new_salary)
+        {name = input; age = new_age; salary = new_salary; next = NULL; };
+};
+
+int getnum();   // Gets number from a line of input.
+
+int main(int argc, char *argv[])
+{
+    node *root = NULL;
+    node *p_node, *new_node;
+    string a_name
+    int age = 1;
+    int salary = 0;
+   
+    while (true) {
+        cout << "Enter a name (or ENTER to exit): ";
+        getline(cin, a_name);
+        if (a_name.empty())
+              break;
+        cout << "Enter age: ";
+        age = getnum();
+        cout << "Enter salary: ";
+        salary = getnum();
+        new_node = new node(a_name, age, salary);
+        
+        // If list is new or node goes at beginning,
+        // then insert as root node. Otherwise,
+        // search for a node to insert node AFTER.
+        
+        if (root == NULL || a_name < root->name) {
+             new_node->next = root;
+             root = new_node;
+        } else {
+             p_node = root;
+             while (p_node->next &&
+                    a_name > p_node->next->name) {
+                      p_node = p_node->next;
+             } 
+             new_node->next = p_node->next;
+             p_node->next = new_node;
+        }
+    } 
+    p_node = root;     // Print out all nodes
+    while (p_node) {
+          cout << "name: " << p_node->name << endl;
+          cout << "age: " << p_node->age << endl;
+          cout << "salary: " << p_node->salary << endl << endl;
+          p_node = p_node->next;
+    }
+
+    system("PAUSE");
+    return 0;
+}
+
+int get_num() {
+     string s;
+     getline(cin, s);
+     return atoi(s);
+}
+

@@ -1,0 +1,11 @@
+// Exercise 01.01.03
+// Print the message "Do you C++?"
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "Do you C++?";
+     system("PAUSE);
+     return 0;
+}

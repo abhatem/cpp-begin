@@ -1,0 +1,11 @@
+// Exercise 1.01.01
+// Print "Get with the Program!"
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "Get with the program!";
+     system("PAUSE");
+     return 0;
+}

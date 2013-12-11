@@ -1,0 +1,24 @@
+// Exercise 03.01.03
+// This program prints only odd numbers.
+// (It does this by incrementing by 2 each time.)
+//
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int  i, n;
+
+    // Get a number from the keyboard and initialize i. 
+
+    cout << "Enter a number and press ENTER: ";
+    cin >> n;
+
+    for (i = 1; i <= n; i = i + 2)  //   For i = n
+        cout << i << " ";           //       Print i.
+
+    cout << endl;
+    system("PAUSE");
+    return 0;
+}
+

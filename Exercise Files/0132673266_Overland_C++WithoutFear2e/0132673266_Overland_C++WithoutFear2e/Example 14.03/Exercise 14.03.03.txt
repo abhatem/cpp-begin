@@ -1,0 +1,13 @@
+// Exercsie 14.03.03
+// Contains convert-to-int and convert-to-float declarations
+// that can be inserted into the String class declaration.
+
+
+// Make sure cstdlib is included to support atoi and atof.
+
+#include <cstdlib>
+
+
+    operator int() {return atoi(ptr);}
+
+    operator double() {return atof(ptr);}

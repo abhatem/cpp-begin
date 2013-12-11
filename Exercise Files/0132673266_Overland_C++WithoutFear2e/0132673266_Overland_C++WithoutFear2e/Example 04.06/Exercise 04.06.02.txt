@@ -1,0 +1,37 @@
+// Exercise 04.06.02
+// This program features a random-generator function
+//  that generates a number from 1 to N, where N is the
+//  number input.
+
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+double rand_float();
+
+int main() {
+    int n, i;
+    double r;
+    
+    srand(time(NULL)); // Set a seed for random-num. generation.
+
+    cout << "Enter number of random reals to produce: ";
+    cin >> n;
+
+    for (i = 1; i <= n; i++) {
+        r = rand_float();       // Get a random 0.0 to 1.0
+        cout << r << endl;      // Print it out
+    }
+    system("PAUSE");
+    return 0;
+}
+
+// Random Float Function.
+//
+double rand_float() {
+    
+    return (double) rand() / RAND_MAX;       
+}
+

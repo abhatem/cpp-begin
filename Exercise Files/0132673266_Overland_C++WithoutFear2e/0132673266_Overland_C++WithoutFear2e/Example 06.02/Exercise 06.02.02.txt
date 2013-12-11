@@ -1,0 +1,28 @@
+// Exercise 06.02.02
+// This program passes the address of a variable to a 
+//  function, which performs a Celsius-to-Fahrenheit conversion.
+
+#include <iostream>
+using namespace std;
+
+void convert_temp(double *p);
+
+int main() {
+    double temp = 10.0;
+
+    cout << "Value (Celsius) before conversion: " << temp << endl;
+
+    convert_temp(&temp);      // Pass address of temp.
+
+    cout << "Value after conversion to Fahrenheit: " << temp << endl;
+
+    system("PAUSE");
+    return 0;
+}
+
+void convert_temp(double *p) {
+    *p = (*p * 1.8) + 32;
+}
+
+
+

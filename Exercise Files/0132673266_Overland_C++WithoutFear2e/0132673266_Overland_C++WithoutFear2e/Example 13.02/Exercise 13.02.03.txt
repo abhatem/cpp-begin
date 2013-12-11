@@ -1,0 +1,9 @@
+// Exercise 13.02.03
+// The following code declares and implements the /
+//  operator for the Fraction class; combine with the
+//  sub function code in Exercise 11.04.04. 
+
+
+    Fraction operator/(const Fraction &other)
+        {return div(other);}
+ 

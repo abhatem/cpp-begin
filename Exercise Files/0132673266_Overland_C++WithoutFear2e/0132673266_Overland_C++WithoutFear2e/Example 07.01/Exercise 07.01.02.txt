@@ -1,0 +1,42 @@
+// Exercise 07.01.02.txt
+// This version of the program uses the "n" version of strcpy and
+//  strcat, to avoid exceeding string-size limitations.
+// This version also uses a #define directive, so that you can test
+//  with different values of STRMAX, by chaning one line and then
+//  recompiling.
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+#define STRMAX 599 
+
+int main() {
+    char str[STRMAX + 1];
+    char name[100];
+    char addr[200];
+    char work[200];
+
+    // Get three strings from the user.
+
+    cout << "Enter name and press ENTER: ";
+    cin.getline(name, 99);
+    cout << "Enter address and press ENTER: ";
+    cin.getline(addr, 199);
+    cout << "Enter workplace and press ENTER: ",
+    cin.getline(work, 199);
+
+    // Build the output string, and then print it.
+
+    strncpy(str, "\nMy name is ", STRMAX);
+    strncat(str, name, STRMAX - strlen(str));
+    strncat(str, ", I live at ", STRMAX - strlen(str));
+    strncat(str, addr, STRMAX - strlen(str));
+    strncat(str, ",\nand I work at ", STRMAX - strlen(str));
+    strncat(str, work, STRMAX - strlen(str));
+    strncat(str, ".", STRMAX - strlen(str));
+
+    cout << str << endl;
+    system("PAUSE");
+    return 0;
+}

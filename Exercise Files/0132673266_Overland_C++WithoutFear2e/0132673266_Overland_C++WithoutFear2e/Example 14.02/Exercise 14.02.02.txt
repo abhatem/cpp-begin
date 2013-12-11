@@ -1,0 +1,17 @@
+// Exercse 14.02.02
+// This code contains definitions for operator< and operator> for
+//  the String class. Within the class declarations, the functions
+//  are declared as:
+//
+//  String operator<(const String &other);
+//  String operator>(const String &other);
+
+
+
+int String::operator<(const String &other) {
+    return (strcmp(ptr, other.ptr) < 0);
+}
+
+int String::operator>(const String &other) {
+    return (strcmp(ptr, other.ptr) > 0);
+}

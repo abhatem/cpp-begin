@@ -1,0 +1,28 @@
+// Exercise 09.02.01.txt
+// This file contains two function definitions which can
+//  be included in other programs or compiled as a module.
+// The two functions overload the function name "get_a_name";
+// The compiler examines argument types to determine which to call.
+
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
+using namespace std;
+
+int get_a_number(int val) {
+    char input_string[200];
+
+    cin.getline(input_string, 199);
+    if (strlen(input_string) == 0)
+        return val;
+    return atoi(input_string);
+}
+     
+double get_a_number(double val) {
+    char input_string[200];
+
+    cin.getline(input_string, 199);
+    if (strlen(input_string) == 0)
+        return val;
+    return atof(input_string);
+}

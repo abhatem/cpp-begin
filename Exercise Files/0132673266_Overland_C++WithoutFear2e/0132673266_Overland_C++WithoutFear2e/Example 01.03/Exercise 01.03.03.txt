@@ -1,0 +1,25 @@
+// Exercise 01.03.03
+// Calculate cube (n to the 3rd) for n, a number
+//   entered from the keyboard.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+// Declare n as a floating-pt variable.
+
+    double  n;
+
+// Prompt and input value of n.
+
+    cout << "Input a number and press ENTER: ";
+    cin >> n;
+
+// Calculate and output the cube.
+
+    cout << "The cube is: " << n * n * n;
+
+    system("PAUSE");
+    return 0;
+}

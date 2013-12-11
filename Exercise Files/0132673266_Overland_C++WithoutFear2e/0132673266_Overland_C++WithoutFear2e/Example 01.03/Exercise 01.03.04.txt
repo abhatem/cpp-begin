@@ -1,0 +1,24 @@
+// Exercise 01.03.04
+// Output square of a number, using variable name "num."
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+// Declare num as a floating-pt variable.
+
+    double  num;
+
+// Prompt and input value of num.
+
+    cout << "Input a number and press ENTER: ";
+    cin >> num;
+
+// Calculate and output the square.
+
+    cout << "The square is: " << num * num;
+
+    system("PAUSE");
+    return 0;
+}

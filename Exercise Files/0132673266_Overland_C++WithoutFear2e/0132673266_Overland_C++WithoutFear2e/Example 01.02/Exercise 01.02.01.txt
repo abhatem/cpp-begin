@@ -1,0 +1,14 @@
+// Exercise 01.02.01
+// Print messages without newlines, only separating spaces.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     cout << "I am Blaxxon, ";
+     cout << "the godlike computer. ";
+     cout << "Fear me!" << endl;
+
+     system("PAUSE);
+     return 0;
+}

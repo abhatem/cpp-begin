@@ -1,0 +1,32 @@
+// Exercise 04.03.02
+// Recursive triangle number function.
+//
+
+#include <iostream>
+using namespace std;
+
+int get_triangle(int n);
+
+int main() {
+    int n;
+
+    while(1) {
+        cout << "Enter a number (0 to quit): ";
+        cin >> n;
+        if (n == 0)
+            break;
+        cout << "Triangle(n) = ";
+        cout << get_triangle(n) << endl;
+    }
+    return 0;
+}
+
+// Triangle function
+//
+int get_triangle(int n) {
+   
+   if (n > 1)
+       return n + get_triangle(n-1);
+   else
+       return 1;
+}

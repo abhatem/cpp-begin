@@ -1,0 +1,21 @@
+// Exercise 02.03.01
+// This program gets a number and tests whether it is
+//  in the range 0 to 100, inclusive.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int  n;
+
+    cout << "Enter a number and press ENTER: ";
+    cin >> n;
+
+    if (n >= 0 && n <= 100)  
+        cout << "Number is in range.";
+    else
+        cout << "Number is not in range.";
+
+    system("PAUSE");
+    return 0;
+}

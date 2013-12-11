@@ -1,0 +1,44 @@
+// Exercise 17.01.01
+// Adds set_float() funct. and tests it.
+//
+#include <iostream>
+
+#include "Fract.h" // Declaration of Fraction class must
+                   // be placed in Fract.h.
+using namespace std;
+
+// Note: Fract.cpp must be compiled and linked into
+// the project, or else Fraction frunction defs must be 
+// copied into this file.
+
+
+class FloatFraction : public Fraction {
+public:
+    FloatFraction() {} // Default constr:
+                       // F.F. inherits no contr’s!
+    double get_float() {
+       double x = get_num();
+       return x / get_den();
+    }
+    
+    void set_float(double x) {             // NEW FNCT.
+         int n = static_cast<int>(x * 100.0);
+         set( n, 100 ); 
+    } 
+};
+
+int main() {
+    FloatFraction fract1;
+
+    fract1.set_float(0.75);
+    cout << "Value of fract1 after set(.75) is " << fract1 << endl;
+    cout << "and its get_float val is: " << fract1.get_float();
+    cout << endl;
+    fract1.set_float(0.55);
+    cout << "Value of fract1 after set(.55) is " << fract1 << endl;
+    fract1.set_float(0.777);
+    cout << "Value of fract1 after set(.777) is " << fract1 << endl;
+
+    system("PAUSE");
+    return 0;
+}

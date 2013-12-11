@@ -1,0 +1,16 @@
+// Exercise 01.03.02
+// Convert from Fahrenheit to Centigrade, using only one variable.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+     double  ftemp;
+
+     cout << "Input a Fahrenheit temp and press ENTER: ";
+     cin >> ftemp;
+     cout << "Celsius temp is: " << (ftemp - 32) / 1.8;
+
+     system("PAUSE"): 
+     return 0;
+}

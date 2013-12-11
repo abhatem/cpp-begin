@@ -1,0 +1,37 @@
+// Exercise 04.06.01.txt
+// This program features a random-generator function
+//  that generates a number from 1 to N, where N is the
+//  number input.
+
+#include <iostream>
+#include <math.h>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+
+int rand_0toN1(int n);
+
+int main() {
+    int n, i;
+    int r;
+    
+    srand(time(NULL)); // Set a seed for random-num. generation.
+
+    cout << "Enter number of dice to roll: ";
+    cin >> n;
+
+    for (i = 1; i <= n; i++) {
+        r = rand_1toN(6) + 1;    // Get a number from 1 to 6
+        cout << r << " ";         // Print it out
+    }
+
+    return 0;
+}
+
+// Random 1-to-N Function.
+// Generate a random integer from 1 to N, giving each
+//  integer an equal probability.
+//
+int rand_1toN(int n) {
+    return (rand() % n) + 1;
+}

@@ -1,0 +1,9 @@
+#include "resource.h"
+
+WindowsApp MENU 
+BEGIN
+           POPUP "&Help"
+           BEGIN
+                MENUITEM "&About", IDM_ABOUT
+           END
+END 

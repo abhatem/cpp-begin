@@ -1,0 +1,33 @@
+// Exercise 04.01.01
+// This program calculates factorial numbers.
+
+#include <iostream>
+using namespace std;
+
+// Function must be declared before being used.
+
+int factorial(int num);
+
+int main() {
+    int n;
+
+    cout << "Enter a number and press ENTER: ";
+    cin >> n;
+
+    cout << "Function returned " << triangle(n) << endl;
+
+    system("PAUSE"); 
+    return 0;
+}
+
+// Factorial function.
+// Return 1 * 2 * ... * n
+
+int factorial(int n) {
+    int i;
+    int product = 1;
+
+    for (i = 1; i <= n; i++)     // For i = 1 to n,
+        product = product * i;   //   Multiply prod. by i
+    return sum;
+}

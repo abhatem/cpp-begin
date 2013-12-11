@@ -1,0 +1,28 @@
+// Exercise 02.02.01
+// This program gets two numbers and prints all the
+//  numbers from n1 and n2.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int  i, n1, n2;
+
+// Get a numbers n1 and n2 from the keyboard. 
+
+    cout << "Enter first number and press ENTER: ";
+    cin >> n1;
+    cout << "Enter second number and press ENTER: ";
+    cin >> n2;
+
+    i = n1;
+ 
+    while (i <= n2) {        // While i less than or equal to n2,
+        cout << i << " ";    //   Print i,
+        i = i + 1;           //   Add 1 to i.
+    }
+
+    system("PAUSE");
+    return 0;
+}
+

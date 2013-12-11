@@ -1,0 +1,37 @@
+// Exercise 07.04.01
+// Tokenizes a line of input and prints tokens
+// separated by &'s.
+//
+#include <iostream>
+#include <cstring>
+using namespace std;
+int main() {
+    char the_string[81], *p;
+    
+    cout << "Input a string to parse: ";
+    cin.getline(the_string, 81);
+    p = strtok(the_string, ", ");
+    if (p != NULL)
+        cout << p;      // Print 1st token without preceeding &.
+    p = strtok(NULL, ", ");
+    while (p != NULL) {
+        cout << "&" << p;  // Print next token with & prceeding.
+        p = strtok(NULL, ", ");
+    }
+    cout << endl;
+    system("PAUSE");
+    return 0;
+}
+
+    // Read characters into target string, until
+    //   comma or end-of-string encountered.
+  
+    while (*p != ',' && *p != '\0')
+        *dest++ = *p++;
+
+    // Terminate target string and return position
+    //   of first unread character.
+
+    *dest = '\0';
+    return p;
+}

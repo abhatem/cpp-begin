@@ -1,0 +1,30 @@
+// Exercise 17.02.02
+// Defines FractionUnits subclass.
+
+#include <iostream>
+#include <string>    // necessary to support STL string class
+#include "Fract.h"
+using namespace std;
+
+// Fract.cpp must be compiled and linked into the project.
+
+
+class FloatUnits : public Fraction {
+public:
+    string units;  // NEW MEMBER
+
+    FractionUnits() {
+        set(0, 1); units = "meters";  // Use meters as default units.
+    }
+    FractionUnits(int n, int d) {set(n, d); units = "meters";}
+    FractionUnits(int n) {set(n, 1); units = "meters";}
+    FractionUnits(int n, int d, string u)
+        {set(n, d); units = u;}
+    FractionUnits(const FractionUnits &src)
+        {set(src.get_num(), src.get_den(); units = src.units; }
+    
+// NOTE: Because Fraction op functions do not preserve units,
+// this class may need its own version of all the op functions.
+
+};
+

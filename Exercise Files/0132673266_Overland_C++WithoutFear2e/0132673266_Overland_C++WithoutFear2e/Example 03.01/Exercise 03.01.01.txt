@@ -1,0 +1,24 @@
+// Exercise 03.03.01
+// This program prompts for two numbers n1 and n2,
+//  and prints the numbers between them.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int  i, n1, n2;
+
+    // Get n1 and n2 from the keyboard. 
+
+    cout << "Enter first number and press ENTER: ";
+    cin >> n1;
+    cout << "Enter second number and press ENTEr: ";
+    cin >> n2;
+
+    for (i = n1; i <= n2; i++)   //   For i = n1 to n2,
+        cout << i << " ";      //       Print i.
+
+    cout << endl;
+    system("PAUSE");
+    return 0;
+}

@@ -1,0 +1,44 @@
+// Exercise 04.02.04
+// This program find the first prime number greater
+//  than n, a number input from keyboard.
+// 
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+// Function must be declared before being used.
+int prime(int n);
+
+int main() {
+    cout << "Enter n: ";
+    cin >> n;
+
+// Set up an infinite loop; break if user enters 0.
+// Otherwise, evaluate n for prime-ness.
+
+     for (int i = n + 1; ;i++) {
+                        
+         if (prime(i)) {                     // Call prime(i)
+             cout << i << " is prime" << endl;
+             break;
+         }
+     }
+     system("PAUSE");
+     return 0;
+}
+
+// Prime number function. Test divisors from
+//  2 to sqrt of n. Return false if a divisor
+//  found; otherwise, return true.
+
+int prime(int n) {
+    int i;
+    double sqrt_n = sqrt(static_cast<double>(n));
+
+    for (i = 2; i <= sqrt_n; i++) {
+        if (n % i == 0)           // If i divides n evenly,
+            return false;         //  n is not prime.
+    }
+    return true;   // If no divisor found, n is prime.
+}

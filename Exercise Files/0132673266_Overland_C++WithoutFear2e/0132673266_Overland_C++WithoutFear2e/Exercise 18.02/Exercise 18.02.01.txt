@@ -1,0 +1,199 @@
+// Exercise 18.02.01
+// This example implements Fraction as a sublcass of printable.
+
+#include <iostream>
+#include <string>
+#include <cstdlib>
+
+using namespace std;
+
+class Printable {
+    virtual void print_me(ostream &os) = 0;
+
+    friend ostream &operator<<(ostream &os, Printable &pr);
+};
+
+
+// Operator<< function:
+// All this does is cause the virtual function, print_me,
+//  to be called, sending output to the stream.
+//
+ostream &operator<<(ostream &os, Printable &pr) {
+    pr.print_me(os);
+    return os;
+};
+
+// CLASSES SUBCLASSING PRINTABLE
+//-----------------------------------------
+
+class P_int : public Printable {
+public:
+    int n;
+
+    P_int() {};
+    P_int(int new_n) {n = new_n; };
+    void print_me(ostream &os);      // override
+};
+
+class P_dbl : public Printable {
+public:
+    double val;
+
+    P_dbl() {};
+    P_dbl(double new_val) {val = new_val; };
+    void print_me(ostream &os);     // override
+};
+
+
+// FRACTION CLASS DECLARATIONS
+//----------------------------------------
+
+
+class Fraction : public Printable {   // <--NOTE SUBLCASSING OF PRINTABLE
+private:
+    int num, den;      // Numerator and denominator.
+public:
+    Fraction() {set(0, 1);}
+    Fraction(int n, int d) {set(n, d);}
+    Fraction(int n) {set(n, 1);}
+    Fraction(const Fraction &src);
+
+    void set(int n, int d) {num = n; den = d; normalize();}
+    int get_num() const {return num;}
+    int get_den() const {return den;}
+    Fraction add(const Fraction &other);
+    Fraction mult(const Fraction &other);
+    Fraction operator+(const Fraction &other)
+        {return add(other);}
+    Fraction operator*(const Fraction &other)
+        {return mult(other);}
+    int operator==(const Fraction &other);
+    int operator<(const Fraction &other);
+    friend ostream &operator<<(ostream &os, Fraction &fr);
+
+    // NEW: DECLARATION OF VIRTUAL print_me FUNCTION.
+    
+    void print_me(ostream &os); 
+
+private:
+    void normalize();   // Put fraction into standard form.
+    int gcf(int a, int b);     // Greatest Common Factor.
+    int lcm(int a, int b);     // Lowest Common Denominator.
+};
+        
+
+
+// ---------------------------------------------------
+// FRACTION CLASS FUNCTIONS
+
+Fraction::Fraction(Fraction const &src) {
+     num = src.num;
+     den = src.den;
+}
+
+// Normalize: put fraction into a standard form, unique
+//  for each mathematically different value.
+//
+void Fraction::normalize(){
+
+    // Handle cases involving 0
+
+    if (den == 0 || num == 0) {
+        num = 0;
+        den = 1;
+    }
+
+    // Put neg. sign in numerator only.
+
+    if (den < 0) {
+        num *= -1;
+        den *= -1;
+    }
+
+    // Factor out GCF from numerator and denominator.
+
+    int n = gcf(num, den);
+    num = num / n;
+    den = den / n;
+}
+
+// Greatest Common Factor
+//
+int Fraction::gcf(int a, int b) {
+    if (a % b == 0)
+        return abs(b);
+    else
+        return gcf(b, a % b);
+}
+
+// Lowest Common Multiple
+//
+int Fraction::lcm(int a, int b){
+    return (a / gcf(a, b)) * b;
+}
+
+Fraction Fraction::add(const Fraction &other) {
+    Fraction fract;
+    int lcd = lcm(den, other.den);
+    int quot1 = lcd/den;
+    int quot2 = lcd/other.den;
+    fract.set(num * quot1 + other.num * quot2, lcd);
+    fract.normalize();
+    return fract;
+}
+
+Fraction Fraction::mult(const Fraction &other) {
+    Fraction fract;
+    fract.set(num * other.num, den * other.den);
+    fract.normalize();
+    return fract;
+}
+
+int Fraction::operator==(const Fraction &other) {
+    return (num == other.num && den == other.den);
+}
+
+int Fraction::operator<(const Fraction &other) {
+    return (num * other.den  <  den * other.num);
+}
+
+// ---------------------------------------------------
+// FRACTION CLASS FRIEND FUNCTION
+
+ostream &operator<<(ostream &os, Fraction &fr) {
+    os << fr.num << "/" << fr.den;
+    return os;
+}
+
+// IMPLMENTATIONS OF PRINT_ME
+//-----------------------------------------
+
+void P_int::print_me(ostream &os) {
+    os << n;
+}
+
+void P_dbl::print_me(ostream &os) {
+    os << "  " << val;
+}
+
+void Fraction::print_me(ostream &os) {
+    os << *this;
+}
+
+// MAIN FUNCTION
+//------------------------------------------
+int main() {
+    Printable *p;
+    P_int num1(5);
+    P_dbl num2(6.25);
+    Fraction fr(1, 2);
+
+    p = &num1;
+    cout << "Here is a number: " << *p << endl;
+    p = &num2;
+    cout << "Here is another:  " << *p << endl;
+    p = &fr;
+    cout << "Here is a fraction: " << *p << endl;
+    system("PAUSE");
+    return 0;
+}

@@ -1,0 +1,14 @@
+; dlltool --base-file C:\Users\Abdullah\AppData\Local\Temp/cca01560.base --output-exp sfsadf.exp --dllname sfsadf.dll --output-def libsfsadf.def --no-export-all-symbols --add-stdcall-alias --exclude-symbol=DllMainCRTStartup@12 --def C:\Users\Abdullah\AppData\Local\Temp/cca01560.def --output-lib libsfsadf.a
+EXPORTS
+;	DllClass::DllClass()
+	_ZN8DllClassC2Ev @ 1
+;	DllClass::~DllClass()
+	_ZN8DllClassD0Ev @ 2
+;	DllClass::~DllClass()
+	_ZN8DllClassD1Ev @ 3
+;	DllClass::~DllClass()
+	_ZN8DllClassD2Ev @ 4
+;	vtable for DllClass
+	_ZTV8DllClass @ 5 DATA
+;	DllClass::DllClass()
+	_ZN8DllClassC1Ev @ 6

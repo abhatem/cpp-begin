@@ -1,0 +1,22 @@
+// Exercise 03.01.02
+// This program prints numbers from N down to 1.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int  i, n;
+
+    // Get a number from the keyboard and initialize i. 
+
+    cout << "Enter a number and press ENTER: ";
+    cin >> n;
+
+    for (i = n; i >= 1; i--)   //   For i = n down to 1
+        cout << i << " ";      //       Print i.
+
+    cout << endl;
+    system("PAUSE");
+    return 0;
+}
+

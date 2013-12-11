@@ -1,0 +1,60 @@
+// Exercise 16.02.03
+// Prompt for RPN strings repeatedly, and do not exit
+// until user presses ENTER with no input.
+//
+// Note that variables are local to the loop inside main(),
+// so that they are reset during each iteration...
+//
+
+#include <iostream>
+#include <cstring>
+#include <stack>
+
+using namespace std;
+#define MAX_CHARS 100
+
+int main(int argc, char *argv[])
+{
+   
+   while (true) {
+top:
+    
+// Variables are local to this loop; therefore, input_str
+// and the stack are reset during each iteration.
+    
+        char input_str[MAX_CHARS+1], *p;
+        stack<double>  num_stack;
+        int c;
+        double a, b, n;
+
+        cout << "Enter RPN string: (ENTER to exit)";
+        cin.getline(input_str, MAX_CHARS);
+        if (strlen(input_str) == 0)
+             break;
+        p = strtok(input_str, " ");
+        while (p) {
+          c = p[0];
+          if (c == '+' || c == '*' || c == '/' || c == '-'){
+              if (num_stack.size() < 2) {
+                cout << "Syntax error: too many ops."<< endl;
+                goto top;
+              }
+              b = num_stack.top(); num_stack.pop();
+              a = num_stack.top(); num_stack.pop();
+              switch (c) {
+                case '+': n = a + b; break;
+                case '*': n = a * b; break;
+                case '/': n = a / b; break;
+                case '-': n = a - b; break;
+              }
+              num_stack.push(n);
+           } else {
+               num_stack.push(atof(p)); 
+           }                                  
+         p = strtok(NULL, " ");
+       }
+       cout <<"The answer is: "<< num_stack.top()<< endl;
+   }
+   system("PAUSE");
+   return 0;
+}

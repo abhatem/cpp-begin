@@ -1,0 +1,38 @@
+// Exercise 04.04.02
+// Solves Tower of Hanoi by using an iterative, rather than
+// recursive solution: this is admittedly less elegant and
+// more difficult to write.
+//
+
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+void move_rings(int n, int src, int dest, int other);
+void move(int src, int dest);
+
+int main()
+{
+  int n = 3;  // Stack is 3 rings high
+    
+  move_rings(n, 1, 3, 2); // Move stack 1 to stack 3
+  system("PAUSE");
+  return 0;
+}
+
+void move_rings(int n, int src, int dest, int other) {
+  if (n == 1) {
+    move(src, dest);
+  } else {
+    move_rings(n - 1, src, other, dest);
+    move(src, dest);
+    move_rings(n - 1, other, dest, src);
+  }
+}
+
+void move(int src, int dest) {
+    cout << "Move ring from pole #";
+    cout << src;
+    cout << " to pole #";
+    cout << dest << ".";
+}

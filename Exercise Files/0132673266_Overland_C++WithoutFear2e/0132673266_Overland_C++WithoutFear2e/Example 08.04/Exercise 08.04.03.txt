@@ -1,0 +1,130 @@
+// Exercise 08.04.03
+// This program provides both reading and writing to binary
+// records through random access, along with a loop that
+// lets user choose different commands each time.
+//
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int get_int(int default_value); // Input a number.
+void write_record();            // Write record to opened file.
+void read_record();             // Read a record of opened file.
+
+char name[21];                  // Data used to r/w a record.
+int  age;
+
+fstream fbin;                   // File-stream object.
+int recsize;                    // Record size, in bytes.
+
+
+// Main function: 1) handle file opening, and 2) prompt for cmds.
+// The rest of the work is delegated to other functions.
+//
+int main() {
+    char filename[81];
+
+    int choice = 0; // 1=write, 2=read, 3=exit.
+    
+    recsize =  sizeof(name) + sizeof(int);
+    cout << "Enter file name: ";
+    cin.getline(filename, 80);
+
+    // Open file for binary-read-write access.
+    // Note that file must already exist.
+
+    fbin.open(filename, ios::binary | ios::in | ios::out);
+    if (!fbin) {
+        cout << "Could not open file " << filename << endl;
+        system("PAUSE");
+        return -1;
+    }
+
+    while(true) {
+
+        // Prompt user for action.
+
+        cout << "Here are the commands:" << endl << endl;
+        cout << " 1. Write a record." << endl;
+        cout << " 2. Read a record." << endl;
+        cout << " 3. Exit." << endl;
+        cout << "What is your command (enter 1,2,3)? ";
+        choice = get_int(0);
+        if (choice == 1)
+             write_record();
+        else if (choice == 2)
+             read_record();
+        else if (choice == 3) {
+             fbin.close();
+             system("PAUSE");
+             return 0;
+        } else 
+             cout << "Bad input. Re-enter..." << endl << endl;
+
+    }  // end while
+}  // end function
+
+
+// Write Record function:
+// Prompt for a rec. number and data, and write a single record.
+//
+void write_record() {
+    int recnum = 0;  // Record number.
+
+    // Get record number and go to record.
+
+    cout << "Enter file record number: ";
+    recnum = get_int(0);    
+    fbin.seekp(recnum * recsize);
+
+    // Get data to write.
+    
+    cout << "Enter name: ";
+    cin.getline(name, 20);
+    cout << "Enter age: ";
+    age = get_int(0);
+
+    // Write data to the file.
+
+    fbin.write(name, 20);
+    fbin.write(reinterpret_cast<char*>(&age), sizeof(int));
+    cout << "Data written successfully." << endl;
+}
+    
+// Read Record function:
+// Prompt for a rec. number and display a single record.
+//
+void read_record() {
+    int recnum = 0;  // Record number.
+
+    // Get record number and go to record.
+
+    cout << "Enter file record number: ";
+    recnum = get_int(0);    
+    fbin.seekp(recnum * recsize);
+
+    // Read data from the file.
+
+    fbin.read(name, 20);
+    fbin.read(reinterpret_cast<char*>(&age), sizeof(int));
+
+    // Display the data and close.
+    
+    cout << "The name is: " << name << endl;
+    cout << "The age is: " << age << endl;
+}
+    
+
+// Get integer function
+// Get an integer from keyboard; return default
+//  value if user enters 0-length string.
+//
+int get_int(int default_value) {
+    char s[81];
+
+    cin.getline(s, 80);
+    if (strlen(s) == 0)
+         return default_value;
+    return atoi(s);
+}

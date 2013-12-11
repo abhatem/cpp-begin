@@ -1,0 +1,25 @@
+// Exercise 02.02.03
+// This program prints even numbers from 0 to n.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int  i, n;
+
+// Get a n from the keyboard. 
+
+    cout << "Enter number and press ENTER: ";
+    cin >> n;
+
+    i = 0;
+ 
+    while (i <= n) {        // While i less than or equal to n2,
+        cout << i << " ";    //   Print i,
+        i = i + 2;           //   Add 2 to i.
+    }
+
+    system("PAUSE");
+    return 0;
+}
+

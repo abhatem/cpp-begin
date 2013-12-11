@@ -1,0 +1,19 @@
+// Exercise 05.01.02
+// This program prints six integers along with the total.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i, sum = 0;
+    int scores[6] = {10, 22, 13, 99, 4, 5};
+
+    for(i = 0; i < 6; i++) {
+        cout << scores[i] << " ";
+        sum = sum + scores[i];
+    }
+    cout << endl << "The sum is " << sum << endl;
+    system("PAUSE");
+    return 0;
+}
+

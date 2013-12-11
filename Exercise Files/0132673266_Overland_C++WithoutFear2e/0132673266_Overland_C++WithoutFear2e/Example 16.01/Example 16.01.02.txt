@@ -1,0 +1,93 @@
+// Example 16.01.02
+// This example extends list sorting to a complex record type.
+// Note that the class must provide operator< and operator==
+// functions, or list items based on the class (in this case,
+// emp_rec) cannot be automaticaly sort.
+//
+
+#include <iostream>
+#include <list>
+#include <string>
+#include <cstdlib>   // Include support for atoi.
+
+using namespace std;
+
+int get_num();
+
+class emp_rec {
+  public:
+     string first_name;
+     string last_name;
+     int age;
+     int level;
+    
+     emp_rec(string fn, string ln, int a, int lv)
+         {first_name = fn; last_name = ln; age = a; level = lv;}
+
+     bool operator<(const emp_rec& other);
+     bool operator==(const emp_rec& other);
+};
+
+bool emp_rec::operator<(const emp_rec& other) {
+    if (last_name != other.last_name)
+         return last_name < other.last_name;
+    if (first_name != other.first_name)
+         return first_name < other.first_name;
+    if (age != other.age)
+         return age < other.age;
+    return level < other.level;
+}
+
+bool emp_rec::operator==(const emp_rec& other) {
+    if (first_name != other.first_name) return false;
+    if (last_name != other.last_name) return false;
+    if (age != other.age) return false;
+    if (level != other.level) return false;
+    return true;
+}
+        
+
+int main(int argc, char *argv[])
+{
+    string s; 
+    list<emp_rec> LE;
+    list<emp_rec>::iterator iter;
+    string fn;
+    string ln;
+    int    a;
+    int    lv;
+    
+    while (true) {
+
+          cout << "Enter first name (ENTER to exit): ";
+          getline(cin, s);
+          if (s.size() == 0)
+               break;
+          fn = s;
+          cout << "Enter last name): ";
+          getline(cin, s);
+          ln = s;
+          cout << "Enter age): ";
+          a = get_num();
+          cout << "Enter level): ";
+         lv = get_num();
+          emp_rec this_record(fn, ln, a, lv);
+
+          LE.push_back(this_record);
+    }
+    LE.sort();         // Sort, and then print elements.
+    
+    for (iter = LE.begin(); iter != LE.end(); iter++) {
+        cout << iter->last_name << ", " << iter->first_name << endl;
+        cout << "age: " << iter->age << endl;
+        cout << "level: " << iter->level << endl << endl;       
+    }
+    system("PAUSE");
+    return 0;
+}
+
+int get_num() {
+    string s;
+    getline(cin, s);
+    return atoi(s.c_str());
+}

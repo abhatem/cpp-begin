@@ -1,0 +1,24 @@
+// Exercise 14.03.04
+// This file includes a function definition for the constructor 
+//  of type String(int), and also an operator=(int) function.
+// The String class declaration also needs to declarations:
+//
+//    String(int n);
+//    operator=(int n);
+//
+
+String::String(int n) {
+   ptr = new char[n + 1];
+   for (int i = 0; i < n; i++)
+       ptr[i] = ' ';
+   ptr[i] = '\0';
+}
+
+String::operator=(int n) {
+   if (ptr)              // Delete existing data, if any.
+       delete [] ptr;
+   ptr = new char[n + 1];
+   for (int i = 0; i < n; i++)
+       ptr[i] = ' ';
+   ptr[i] = '\0';
+}    

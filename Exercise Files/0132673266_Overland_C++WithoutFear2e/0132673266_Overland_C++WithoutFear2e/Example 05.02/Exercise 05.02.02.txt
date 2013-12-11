@@ -1,0 +1,56 @@
+// Exercise 05.02.02
+// This program tests a number of different hit values which are
+//  specified in the #define directive. To change the number of values,
+//  you need only change this one line and recompile.
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+#define VALUES 10
+
+int rand_0toN1(int n);
+
+int hits[VALUES];
+
+int main() {
+    int n;
+    int i;
+    int r;
+
+    srand(time(NULL));      // Set seed for random numbers.
+
+    cout << "Enter number of trials to run and press ENTER: ";
+    cin >> n;
+
+    // Run n trials. For each trial, get a number from 0 to VALUES-1
+    //  and then increment the corresponding element in the
+    //  hits array.
+
+    for (i = 1; i <= n; i++) {
+        r = rand_0toN1(VALUES);
+        hits[r]++;
+    }
+
+    // Print all the elements in the hits array, along with
+    //  the ratio of hits to the EXPECTED hits (n / VALUES).
+
+    for (i = 0; i < VALUES; i++) {
+        cout << i << ": " << hits[i] << "      Accuracy: ";
+        cout << static_cast<double>(hits[i]) / ((double) n / VALUES) << endl;
+    }
+
+    system("PAUSE");
+    return 0;
+}
+
+// Random 0-to-N1 Function.
+// Generate a random integer from 0 to N-1.
+//
+int rand_0toN1(int n) {
+    return rand() % n;
+}
+
+

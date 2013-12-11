@@ -1,0 +1,26 @@
+// Exercise 05.01.03
+// This program prompts for seven numbers and then
+//  prints them all out along with the total.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i, sum = 0;
+    int scores[7];
+
+    for(i = 0; i < 7; i++) {
+        cout << "Enter #" << i << ": ";
+        cin >> scores[i];
+    }
+    cout << "Here are the numbers: ";
+    for(i = 0; i < 7; i++) {
+        cout << scores[i] << " ";
+        sum = sum + scores[i];
+    }
+
+    cout << endl << "sum = " << sum << endl;
+    system("PAUSE");
+    return 0;
+}
+
